@@ -5,12 +5,15 @@ import './App.css';
 
 import LoginPage from './pages/login/login.component';
 
+import Header from './components/header/header.component';
+
 
 function App() {
   return (
-    <div className="App">
+    <div>
+      <Header/>
       <Switch>
-        <Route path="/" component={LoginPage}/>
+        <Route exact path="/" component={LoginPage}/>
       </Switch>
     </div>
   );

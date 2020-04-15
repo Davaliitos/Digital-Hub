@@ -2,3 +2,12 @@ input{
   margin: 0;
   padding: 0;
 }
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+*{
+  box-sizing: border-box;
+}

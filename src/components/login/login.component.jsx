@@ -42,7 +42,6 @@ class Login extends React.Component {
 
   enableButton = () =>{
       const {validUsername, validPassword} = this.state;
-      console.log(validUsername, validPassword)
       return (validUsername && validPassword)
   }
 

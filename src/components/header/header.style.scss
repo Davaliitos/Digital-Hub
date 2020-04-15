@@ -1,0 +1,38 @@
+.header {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    z-index: 9999;
+
+ 
+    .options {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+  
+      .option {
+        padding-left: 15px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+
+    }
+
+
+    
+
+    .logout {
+        display:flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-left: 15px;
+        padding-right: 15px;
+
+    }
+  }
