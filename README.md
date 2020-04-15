@@ -30,7 +30,7 @@ I used the following technologies: ReactJs, Html, CSS
 
 I started working at first with the login page. The login page was the best starting point for this application. I started creating the basic architecture, along with the folder structure. 
 
-I was following a very careful approach, one of the most important abilities you need to have as a React Developer is to know what is going to be a component, where the state should live, and what changes when you modify the state.
+I was following a very careful approach, one of the most important abilities you need to have as a React Developer is to know what is going to be a component, where the state should live, and what is updated when you modify the state.
 
 For the login page the most challenging task was to create the validation funcionality. I decided to use regular expressions to validate whether or not the value is valid. 
 
