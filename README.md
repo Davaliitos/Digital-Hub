@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+By Fernando Dávalos
 
-## Available Scripts
+# Digital Hub
 
-In the project directory, you can run:
+Digital Hub is a simple website that is responsive, creates transactions using different approaches using ReactJs
 
-### `yarn start`
+## Installation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone this repository locally.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+2. Install dependencies using 
 
-### `yarn test`
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Start your app using
 
-### `yarn build`
+```bash
+npm run start
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4.Navigate to app in a Google Chrome or Mozilla Firefox (http:localhost:3000)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+5. Enjoy!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I used the following technologies: ReactJs, Html, CSS
 
-### `yarn eject`
+## Development Approach
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I started working at first with the login page. The login page was the best starting point for this application. I started creating the basic architecture, along with the folder structure. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I was following a very careful approach, one of the most important abilities you need to have as a React Developer is to know what is going to be a component, where the state should live, and what changes when you modify the state.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For the login page the most challenging task was to create the validation funcionality. I decided to use regular expressions to validate whether or not the value is valid. Also I decided to not implement the one-second timeout after the blur, as I thought it was unnecessary.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+After finishing the Login Page, I thought it was time to implement Redux into the application. Redux is handling all the information regarding the user, the balance information, and the transactions information.
 
-## Learn More
+Following the implementation of redux, I created the Router functionality, you cannot access any site of the page if you are not logged in. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+After creating the components of the MenuItems, I started working with the transaction data. I decided to store all the data in Redux as an initial state, usually this data would come from an external server, but in this case, this approach is adecuate. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+As for the pie charts, D3 was the library of choice.
 
-### Code Splitting
+The final page was the transfer page, it was the most challenging of the three. For this page I created the 'Create New Transfer' component. This component is capable of creating transactions, this transactions are stored in redux, the application is also capable of adding money into the selected destination account, and decreasing money from the selected origin account.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+If you have any doubts regarding the project, you can contact me at fernando_29_1994@hotmail.com
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
