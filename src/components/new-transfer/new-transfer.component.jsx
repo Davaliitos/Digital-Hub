@@ -8,6 +8,8 @@ import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import CustomDropdown from '../custom-dropdown/custom-dropdown.component';
 
+import XHR from '../../lib/xhr';
+
 import "./new-transfer.style.scss";
 
 class NewTransfer extends React.Component {
@@ -27,6 +29,15 @@ class NewTransfer extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { destinationAccount, amount, originAccount } = this.state;
+    const params = {
+      fromAccount : originAccount,
+      toAccount : destinationAccount,
+      amount : amount
+    }
+    XHR.createTransfer(params).then(response => {
+      console.log(response)
+    })
 }
 
   clearForm = (event) => {

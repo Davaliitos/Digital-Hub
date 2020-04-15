@@ -39,7 +39,7 @@ const Home = ({currentUser, accountsBalance, transactionsPerAccount}) => {
                         <CustomTableCell>Date of Latest Transfer</CustomTableCell>
                     </CustomTableRow>
                     {
-                        accountsBalance.map(account => (
+                        accountsBalance.balance.map(account => (
                         <CustomTableRow key={account.account}>
                             <CustomTableCell>{account.account}</CustomTableCell>
                             <CustomTableCell>{account.balance.currency}{account.balance.value}</CustomTableCell>
