@@ -33,7 +33,7 @@ const Home = ({currentUser, accountsBalance, transactionsPerAccount,latestTransa
             >
                 <img alt="shoes" src="https://i.ibb.co/GCCdy8t/womens.png"/>
             </MenuCard>
-            <MenuCard>
+            <MenuCard title="Current Balance" onTop>
                 <CustomTable>
                     <CustomTableRow>
                         <CustomTableCell>Account No.</CustomTableCell>
