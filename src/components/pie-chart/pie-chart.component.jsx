@@ -1,12 +1,11 @@
 import React from "react";
 import * as d3 from "d3";
 
-import './pie-chart.style.scss'
-
+import "./pie-chart.style.scss";
 
 class PieChart extends React.Component {
   componentDidMount() {
-    var data = { a: 9, b: 20, c: 30, d: 8, e: 12 };
+    var data = this.props.data;
 
     var svg = d3
       .select("#pie")
@@ -26,9 +25,7 @@ class PieChart extends React.Component {
 
     var data_ready = pie(d3.entries(data));
 
-    var arcGenerator = d3.arc()
-        .innerRadius(0)
-        .outerRadius(150)
+    var arcGenerator = d3.arc().innerRadius(0).outerRadius(100);
 
     svg
       .selectAll("whatever")
@@ -39,20 +36,69 @@ class PieChart extends React.Component {
       .attr("fill", function (d) {
         return color(d.data.key);
       })
-      .attr('stroke','black')
-      .style('stroke-width','2px')
-      .style('opacity',0.7)
+      .attr("stroke", "black")
+      .style("stroke-width", "2px")
+      .style("opacity", 0.7);
 
     svg
       .selectAll("whatever")
       .data(data_ready)
       .enter()
-      .append('text')
-      .text(function(d) { return 'grp ' + d.data.key})
-      .attr('transform',function(d) {return 'translate(' + arcGenerator.centroid(d) + ')'})
-      .style('text-anchor','middle')
-      .style('font-size', 17)
+      .append("text")
+      .text(function (d) {
+        return "$" + d.data.value;
+      })
+      .attr("transform", function (d) {
+        return "translate(" + arcGenerator.centroid(d) + ")";
+      })
+      .style("text-anchor", "middle")
+      .style("font-size", 17);
 
+    const svgLegend = svg
+      .append("g")
+      .attr("class", "gLegend")
+      .attr("transform", "translate(0,0)");
+
+    const legend = svgLegend
+      .selectAll(".legend")
+      .data(data_ready)
+      .enter()
+      .append("g")
+      .attr("class", "legend");
+
+    legend
+      .append("rect")
+      .attr("class", "legend-node")
+      .attr("x", -10)
+      .attr("y", -12)
+      .attr("width", "22px")
+      .attr("height", "22px")
+      .style("fill", (d) => color(d.data.key));
+
+    legend
+      .append("text")
+      .attr("class", "correct-legend")
+      .attr("style", "font-size:14px;font-weight:600;")
+      .attr("x", 15)
+      .attr("y", 15)
+      .text(function (d) {
+        return "" + d.data.key;
+      });
+
+      var offset = 0;
+      
+      legend.each(function() {
+        var pos =
+            d3
+                .select(this)
+                .node()
+                .getBoundingClientRect().width + 20;
+        d3.select(this).attr(
+            'transform',
+            'translate(' + offset + ',-48)'
+        );
+        offset = offset + pos;
+    });
   }
 
   render() {
