@@ -41,7 +41,7 @@ class Login extends React.Component {
 
   validatePassword = event => {
       const password = event.target.value;
-      const regex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!"$%&/])[a-zA-Z!"$%&/]{8,20}$/;
+      const regex =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!"$%&/])[a-zA-Z0-9!"$%&/]{8,20}$/;
       const valid = regex.test(password)
       this.setState({validPassword : valid})
   }
