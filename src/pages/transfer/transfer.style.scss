@@ -1,3 +1,10 @@
 .transfer-page{
     padding: 20px 80px;
+
+    .first-row{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin-left: 5%;
+    }
 }

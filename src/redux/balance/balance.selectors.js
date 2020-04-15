@@ -4,5 +4,5 @@ const selectBalance = state => state.balance;
 
 export const selectAccountBalance = createSelector(
     [selectBalance],
-    balance => balance.balance
+    balance => balance
 )

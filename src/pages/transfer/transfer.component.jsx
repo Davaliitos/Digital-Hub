@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import moment from 'moment'
 
 import { selectAccountBalance } from "../../redux/balance/balance.selectors";
 import {
@@ -12,6 +13,7 @@ import PieChart from "../../components/pie-chart/pie-chart.component";
 import CustomTable from "../../components/custom-table/custom-table.component";
 import CustomTableRow from "../../components/custom-table-row/custom-table-row.component";
 import CustomTableCell from "../../components/custom-table-cell/custom-table-cell.component";
+import NewTransfer from "../../components/new-transfer/new-transfer.component";
 
 import "./transfer.style.scss";
 
@@ -21,7 +23,8 @@ const TransferPage = ({
   transactionsHistoryPerAccount,
 }) => (
   <div className="transfer-page">
-    <div>
+    <div className="first-row">
+      <NewTransfer/>
       <PieChart data={transactionsPerAccount} />
     </div>
     {Object.keys(transactionsHistoryPerAccount).map((account,index) => {
@@ -39,7 +42,7 @@ const TransferPage = ({
                     <CustomTableRow key={index2}>
                         <CustomTableCell>{account}</CustomTableCell>
                         <CustomTableCell>{transaction.toAccount}</CustomTableCell>
-                        <CustomTableCell>{transaction.sentAt}</CustomTableCell>
+                        <CustomTableCell>{moment(transaction.sentAt).format("YYYY-MM-DD")}</CustomTableCell>
                         <CustomTableCell>{transaction.amount.value}</CustomTableCell>
                     </CustomTableRow>
                 ))
