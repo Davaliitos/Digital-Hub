@@ -1,7 +1,10 @@
 import React from "react";
+import {connect} from 'react-redux'
 
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
+
+import {setCurrentUser} from './../../redux/user/user.actions'
 
 import "./login.style.scss";
 
@@ -19,6 +22,9 @@ class Login extends React.Component {
 
   handleSubmit = event => {
       event.preventDefault();
+      const {setCurrentUser} = this.props;
+      const {username} = this.state;
+      setCurrentUser(username);
   }
 
   handleChange = (event) => {
@@ -84,4 +90,10 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser : user => dispatch(setCurrentUser(user))
+})
+
+
+export default connect(null,mapDispatchToProps)(Login);
