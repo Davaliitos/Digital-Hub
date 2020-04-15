@@ -44,7 +44,7 @@ const Home = ({currentUser, accountsBalance, transactionsPerAccount,latestTransa
                         accountsBalance.balance.map(account => (
                         <CustomTableRow key={account.account}>
                             <CustomTableCell>{account.account}</CustomTableCell>
-                            <CustomTableCell>{account.balance.currency}{account.balance.value}</CustomTableCell>
+                            <CustomTableCell>{account.balance.currency}{Math.round(account.balance.value * 100)/100}</CustomTableCell>
                             <CustomTableCell>{`${moment(latestTransaction[account.account]).format("YYYY-MM-DD")}`}</CustomTableCell>
                         </CustomTableRow>
                         ))
