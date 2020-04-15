@@ -8,7 +8,7 @@ export const createTransaction = (transactions, newTransaction) => {
             currency : '$',
             value : amount
         },
-        sentAt : moment(),
+        sentAt : moment().format(),
         toAccount: toAccount
     }
 

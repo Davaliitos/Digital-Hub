@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
+import moment from 'moment'
 
 import {selectCurrentUser} from '../../redux/user/user.selectors';
 import {selectAccountBalance} from '../../redux/balance/balance.selectors';
-import {selectTransactionPerAccount} from '../../redux/transactions/transactions.selectors';
+import {selectTransactionPerAccount, selectLatestTranfer} from '../../redux/transactions/transactions.selectors';
 
 import MenuCard from '../../components/menu-item/menu-item.component';
 import CustomTable from '../../components/custom-table/custom-table.component';
@@ -14,7 +15,8 @@ import PieChart from '../../components/pie-chart/pie-chart.component';
 
 import './home.style.scss'
 
-const Home = ({currentUser, accountsBalance, transactionsPerAccount}) => {
+const Home = ({currentUser, accountsBalance, transactionsPerAccount,latestTransaction}) => {
+    console.log(latestTransaction)
     return(
     <div className="homepage">
         <h2>Welcome to your online banking {currentUser}</h2>
@@ -43,7 +45,7 @@ const Home = ({currentUser, accountsBalance, transactionsPerAccount}) => {
                         <CustomTableRow key={account.account}>
                             <CustomTableCell>{account.account}</CustomTableCell>
                             <CustomTableCell>{account.balance.currency}{account.balance.value}</CustomTableCell>
-                            <CustomTableCell>Hoy</CustomTableCell>
+                            <CustomTableCell>{`${moment(latestTransaction[account.account]).format("YYYY-MM-DD")}`}</CustomTableCell>
                         </CustomTableRow>
                         ))
                     }
@@ -57,7 +59,8 @@ const Home = ({currentUser, accountsBalance, transactionsPerAccount}) => {
 const mapStateToProps = createStructuredSelector({
     currentUser : selectCurrentUser,
     accountsBalance : selectAccountBalance,
-    transactionsPerAccount : selectTransactionPerAccount
+    transactionsPerAccount : selectTransactionPerAccount,
+    latestTransaction : selectLatestTranfer
   })
 
 export default connect(mapStateToProps)(Home);

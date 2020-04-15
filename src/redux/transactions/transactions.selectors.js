@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import moment from 'moment'
 
 const selectTransactions = state => state.transactions;
 
@@ -33,5 +34,24 @@ export const selectTransactionHistoryPerAccount = createSelector(
             accumulatedValue[transaction.fromAccount] = transactionArray
         }
         return accumulatedValue
+    },{})
+)
+
+export const selectLatestTranfer = createSelector(
+    [selectAllTransactions],
+    transactions => transactions.reduce((accumulatedValue,transaction) => {
+        const { fromAccount, sentAt} = transaction;
+        if(accumulatedValue[fromAccount]){
+            var currentTime = moment(accumulatedValue[fromAccount]);
+            var newTime = moment(sentAt);
+            var diff = moment.duration(currentTime.diff(newTime));
+            if(diff < 0){
+                accumulatedValue[fromAccount] = sentAt
+            }
+        }
+        else{
+            accumulatedValue[fromAccount] = sentAt
+        }
+        return accumulatedValue;
     },{})
 )
