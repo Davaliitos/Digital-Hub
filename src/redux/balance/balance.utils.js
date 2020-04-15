@@ -7,7 +7,7 @@ export const addMoney = (balance, newTransaction) => {
     if(existingBalance){
         balance.forEach(account => {
             if(account.account === parseInt(toAccount)){
-                account.balance.value = account.balance.value + parseInt(amount)
+                account.balance.value = account.balance.value + parseFloat(amount)
             }
         })
         console.log(balance)
@@ -25,7 +25,7 @@ export const removeMoney = (balance, newTransaction) => {
     if(existingBalance){
         balance.forEach(account => {
             if(account.account === parseInt(fromAccount)){
-                account.balance.value = account.balance.value - parseInt(amount)
+                account.balance.value = account.balance.value - parseFloat(amount)
             }
         })
         console.log(balance)
