@@ -3,10 +3,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: rgb(36, 36, 36);
     z-index: 9999;
 
- 
+    .enabled{
+      opacity: 1;
+      background-color: black;
+    }
+
     .options {
       width: 50%;
       height: 100%;
@@ -16,10 +20,17 @@
   
       .option {
         padding-left: 15px;
+        padding-right: 15px;
         height: 100%;
         display: flex;
         align-items: center;
         cursor: pointer;
+
+        &:hover{
+          background-color: red;
+          opacity: 1;
+        }
+
       }
 
     }
