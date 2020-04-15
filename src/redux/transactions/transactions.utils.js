@@ -3,13 +3,13 @@ import moment from 'moment'
 export const createTransaction = (transactions, newTransaction) => {
     const {fromAccount, toAccount, amount} = newTransaction;
     const correcTransaction = {
-        fromAccount : fromAccount,
+        fromAccount : parseInt(fromAccount),
         amount : {
             currency : '$',
-            value : amount
+            value : parseFloat(amount)
         },
         sentAt : moment().format(),
-        toAccount: toAccount
+        toAccount: parseInt(toAccount)
     }
 
     return [...transactions, correcTransaction]

@@ -1,5 +1,6 @@
 .transfer {
-  width: 50%;
+  width: 30%;
+  min-width: 360px;
   height: 600px;
   background-color: rgb(207, 207, 207);
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.28);
@@ -11,6 +12,7 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+      width: 92%;
     }
   }
 }

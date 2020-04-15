@@ -4,15 +4,16 @@ import * as d3 from "d3";
 import "./pie-chart.style.scss";
 
 class PieChart extends React.Component {
-  componentDidMount() {
+  renderChart = () => {
     var data = this.props.data;
+    var height = this.props.height ? this.props.height : 300;
 
     var svg = d3
       .select("#pie")
-      .attr("width", 300)
-      .attr("height", 300)
+      .attr("width", height)
+      .attr("height", height)
       .append("g")
-      .attr("transform", "translate(150,150)");
+      .attr("transform", "translate(" + height / 2 + "," + height / 2 + ")");
 
     var color = d3
       .scaleOrdinal()
@@ -25,7 +26,10 @@ class PieChart extends React.Component {
 
     var data_ready = pie(d3.entries(data));
 
-    var arcGenerator = d3.arc().innerRadius(0).outerRadius(100);
+    var arcGenerator = d3
+      .arc()
+      .innerRadius(0)
+      .outerRadius(height / 3);
 
     svg
       .selectAll("whatever")
@@ -57,7 +61,7 @@ class PieChart extends React.Component {
     const svgLegend = svg
       .append("g")
       .attr("class", "gLegend")
-      .attr("transform", "translate(0,0)");
+      .attr("transform", "translate(-100,0)");
 
     const legend = svgLegend
       .selectAll(".legend")
@@ -69,7 +73,7 @@ class PieChart extends React.Component {
     legend
       .append("rect")
       .attr("class", "legend-node")
-      .attr("x", -10)
+      .attr("x", -20)
       .attr("y", -12)
       .attr("width", "22px")
       .attr("height", "22px")
@@ -80,25 +84,29 @@ class PieChart extends React.Component {
       .attr("class", "correct-legend")
       .attr("style", "font-size:14px;font-weight:600;")
       .attr("x", 15)
-      .attr("y", 15)
+      .attr("y", 5)
       .text(function (d) {
         return "" + d.data.key;
       });
 
-      var offset = 0;
-      
-      legend.each(function() {
-        var pos =
-            d3
-                .select(this)
-                .node()
-                .getBoundingClientRect().width + 20;
-        d3.select(this).attr(
-            'transform',
-            'translate(' + offset + ',-48)'
-        );
-        offset = offset + pos;
+    var offset = 0;
+
+    legend.each(function () {
+      var pos = d3.select(this).node().getBoundingClientRect().width + 20;
+      d3.select(this).attr(
+        "transform",
+        "translate(" + offset + "," + -height * 0.4 + ")"
+      );
+      offset = offset + pos;
     });
+  };
+
+  componentDidMount() {
+    this.renderChart()
+  }
+
+  componentDidUpdate(){
+    this.renderChart();
   }
 
   render() {

@@ -25,7 +25,7 @@ const TransferPage = ({
   <div className="transfer-page">
     <div className="first-row">
       <NewTransfer/>
-      <PieChart data={transactionsPerAccount} />
+      <PieChart data={transactionsPerAccount} height={600} />
     </div>
     {Object.keys(transactionsHistoryPerAccount).map((account,index) => {
       return (
