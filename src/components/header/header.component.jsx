@@ -16,7 +16,7 @@ const Header = ({currentUser, setCurrentUser}) => (
             </Link>
             {
                 currentUser ? (
-                    <Link className="option" to="/home">
+                    <Link className="option" to="/">
                         HOME
                     </Link>
                 )
@@ -24,7 +24,7 @@ const Header = ({currentUser, setCurrentUser}) => (
             }
             {
                 currentUser ? (
-                    <Link className="option" to="/">
+                    <Link className="option" to="/transfer">
                         TRANSFER
                     </Link>
                 )

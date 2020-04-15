@@ -7,6 +7,7 @@ import './App.css';
 
 import LoginPage from './pages/login/login.component';
 import HomePage from './pages/home/home.component';
+import TransferPage from './pages/transfer/transfer.component';
 
 import Header from './components/header/header.component';
 import {selectCurrentUser} from './redux/user/user.selectors'
@@ -19,6 +20,7 @@ const App = ({currentUser}) => {
       <Switch>
         <Route exact path="/login" render={() => currentUser ? (<Redirect to="/"/>) : (<LoginPage/>)}/>
         <Route exact path="/" render={() => !currentUser ? (<Redirect to="/login"/>) : (<HomePage/>)}/>
+        <Route exact path="/transfer" render={() => !currentUser ? (<Redirect to="/login"/>) : (<TransferPage/>)}/>
       </Switch>
     </div>
   );

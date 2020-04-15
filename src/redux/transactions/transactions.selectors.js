@@ -19,3 +19,19 @@ export const selectTransactionPerAccount = createSelector(
         return accumulatedValue;
     },{})
 )
+
+export const selectTransactionHistoryPerAccount = createSelector(
+    [selectAllTransactions],
+    transactions => transactions.reduce((accumulatedValue, transaction) => {
+        const { toAccount, sentAt, amount} = transaction;
+        if(accumulatedValue[transaction.fromAccount]){
+            const transfer = {toAccount, amount, sentAt}
+            accumulatedValue[transaction.fromAccount].push(transfer)
+        }
+        else{
+            const transactionArray= [{toAccount, amount, sentAt}]
+            accumulatedValue[transaction.fromAccount] = transactionArray
+        }
+        return accumulatedValue
+    },{})
+)
