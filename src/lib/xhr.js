@@ -13,8 +13,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 else if(process.env.NODE_ENV === 'development'){
     mockXHR.onPost(URLs.transfer).reply(config => {
-        console.log(config)
-        return [200, {}]
+        return [200, {config}]
     })
 }
 

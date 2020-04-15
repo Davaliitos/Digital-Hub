@@ -1,7 +1,10 @@
+import BalanceTypes from './balance.types';
+import { addMoney, removeMoney } from './balance.utils';
+
 const INITIAL_STATE = {
     balance : [
         {
-            account : 123456789,
+            account : 12345678,
             balance : {
                 currency : "€",
                 value : 765095.54
@@ -10,7 +13,7 @@ const INITIAL_STATE = {
             createdAt : "2012-04-23T18:25:43.511Z"
         },
         {
-            account : 987654321,
+            account : 98765432,
             balance : {
                 currency : "$",
                 value: 524323.54
@@ -23,6 +26,16 @@ const INITIAL_STATE = {
 
 const balanceReducer = (state = INITIAL_STATE, action ) => {
     switch(action.type){
+        case BalanceTypes.ADD_MONEY:
+            return {
+                ...state,
+                balance : addMoney(state.balance,action.payload)
+            }
+        case BalanceTypes.REMOVE_MONEY:
+            return {
+                ...state,
+                balance : removeMoney(state.balance, action.payload)
+            }
         default:
             return state;
     }

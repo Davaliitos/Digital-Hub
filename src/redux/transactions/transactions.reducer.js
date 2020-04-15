@@ -1,8 +1,11 @@
+import TransactionTypes from  './transactions.types'
+import {createTransaction} from './transactions.utils'
+
 const INITIAL_STATE = {
     transactions : [
         {
-            fromAccount : 123456789,
-            toAccount : 192837465,
+            fromAccount : 12345678,
+            toAccount : 19283746,
             amount : {
                 currency : "€",
                 value : 876.88
@@ -10,8 +13,8 @@ const INITIAL_STATE = {
             sentAt : "2012-04-23T18:25:43.511Z"
         },
         {
-            fromAccount : 123456789,
-            toAccount : 192837465,
+            fromAccount : 12345678,
+            toAccount : 19283746,
             amount : {
                 currency : "€",
                 value : 654.88
@@ -19,8 +22,8 @@ const INITIAL_STATE = {
             sentAt : "2012-04-23T18:25:43.511Z"
         },
         {
-            fromAccount : 987654321,
-            toAccount : 543216789,
+            fromAccount : 98765432,
+            toAccount : 54321678,
             amount : {
                 currency : "$",
                 value : 543
@@ -28,8 +31,8 @@ const INITIAL_STATE = {
             sentAt : "2012-04-23T18:25:43.511Z"
         },
         {
-            fromAccount : 987654321,
-            toAccount : 543216789,
+            fromAccount : 98765432,
+            toAccount : 54321678,
             amount : {
                 currency : "$",
                 value : 987.54
@@ -41,6 +44,11 @@ const INITIAL_STATE = {
 
 const transactionsReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
+        case TransactionTypes.CREATE_TRANSACTION:
+            return{
+                ...state,
+                transactions : createTransaction(state.transactions, action.payload)
+            }
         default:
             return state;
     }
